@@ -25,7 +25,7 @@ export default class App extends Component {
         <Router>
           <Scene key="root">
             <Scene key="showroom" component={Showroom} title="Showroom" initial={true} />
-            <Scene key="cameraar" component={CameraAR} title="CameraAR" />
+            <Scene key="cameraar" component={CameraAR} title="Camera" />
           </Scene>
         </Router>
       </View>

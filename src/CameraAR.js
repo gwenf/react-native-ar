@@ -48,6 +48,26 @@ export default class App extends Component {
   }
 
   render() {
+    var image = null;
+    switch (this.props.number) {
+      case 1:
+        image = (<Image source={require('../assets/img/item-1.png')}
+                      style={styles.image} />);
+        break;
+      case 2:
+        image = (<Image source={require('../assets/img/item-2.png')}
+                      style={styles.image} />);
+        break;
+      case 3:
+        image = (<Image source={require('../assets/img/item-3.png')}
+                      style={styles.image} />);
+        break;
+      case 4:
+        image = (<Image source={require('../assets/img/item-4.png')}
+                      style={styles.image} />);
+        break;
+    }
+
     return (
       <View style={styles.container}>
         <Camera
@@ -57,31 +77,38 @@ export default class App extends Component {
           style={styles.preview}
           onBarCodeRead={this.readQR.bind(this)}
           aspect={Camera.constants.Aspect.fill}>
-          <View style={styles.buttonBar}>
-            <TouchableHighlight style={styles.button} onPress={this.switchCamera.bind(this)}>
-              <Text style={styles.buttonText}>Flip</Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.button} onPress={this.takePicture.bind(this)}>
-              <Text style={styles.buttonText}>Take</Text>
-            </TouchableHighlight>
+
+          <View style={styles.imageContainer}>
+            {image}
           </View>
-          <Image
-            style={{
-              opacity: this.state.opacity,
-              height: parseInt(this.state.bounds.size.height),
-              width: parseInt(this.state.bounds.size.width),
-              left: parseInt(this.state.bounds.origin.x),
-              top: parseInt(this.state.bounds.origin.y),
-              resizeMode: 'stretch',
-              position: 'absolute'
-            }}
-            source={require('../assets/img/fox-250-157.png')}
-          />
         </Camera>
       </View>
     );
   }
 }
+
+
+          // <View style={styles.buttonBar}>
+            // <TouchableHighlight style={styles.button} onPress={this.switchCamera.bind(this)}>
+              // <Text style={styles.buttonText}>Flip</Text>
+//            </TouchableHighlight>
+            // <TouchableHighlight style={styles.button} onPress={this.takePicture.bind(this)}>
+              // <Text style={styles.buttonText}>Take</Text>
+            // </TouchableHighlight>
+          // </View>
+
+// <Image
+//   style={{
+    // opacity: this.state.opacity,
+    // height: parseInt(this.state.bounds.size.height),
+    // width: parseInt(this.state.bounds.size.width),
+    // left: parseInt(this.state.bounds.origin.x),
+    // top: parseInt(this.state.bounds.origin.y),
+    // resizeMode: 'stretch',
+    // position: 'absolute'
+  // }}
+  // source={require('../assets/img/fox-250-157.png')}
+// />
 
 const styles = StyleSheet.create({
   container: {
@@ -119,5 +146,15 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#FFFFFF"
+  },
+  imageContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  image: {
+    height: 180,
+    width: 150,
+    top: 20,
   }
 });
