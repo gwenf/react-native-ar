@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Scene } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import {
   StyleSheet,
   Dimensions,
@@ -9,8 +9,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import Showroom from './Showroom';
-import CameraAR from './CameraAR';
+import Button from './styling/Button'
 
 export default class App extends Component {
   constructor(props) {
@@ -22,19 +21,19 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Router>
-          <Scene key="root">
-            <Scene key="showroom" component={Showroom} title="Showroom" initial={true} />
-            <Scene key="cameraar" component={CameraAR} title="CameraAR" />
-          </Scene>
-        </Router>
+        <Text>Showroom App</Text>
+        <Button onPress={Actions.cameraar}>
+          This is PageOne!
+        </Button>
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
